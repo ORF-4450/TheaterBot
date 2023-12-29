@@ -117,7 +117,10 @@ public class Robot extends TimedRobot {
       }
     }
   }
-  private void moveAttachments() {    
+  private void moveAttachments() { 
+    counter += 0.01;
+    if (counter >= (2 * Math.PI)) {counter = 0.0;}
+       
     // arms ------------------
     double armApower = 0; if (armAtoggle) {armApower = 0.3 + 0.2 * Math.sin(counter);}
     double armBpower = 0; if (armBtoggle) {armBpower = 0.3 + 0.2 * Math.cos(counter+0.22);}
@@ -135,8 +138,6 @@ public class Robot extends TimedRobot {
     shuffleboard.armY_speed.setDouble(armYpower);
     
     // eye -------------------
-    counter += 0.01;
-    if (counter >= (2 * Math.PI)) {counter = 0.0;}
     if (eyetoggle) {eye.set(shuffleboard.eye_speed.getDouble(0.1));} else {eye.set(0);}
 
     // set shuffleboard ----------
@@ -149,22 +150,15 @@ public class Robot extends TimedRobot {
   private void drive() {
     drivebase.setMaxOutput(shuffleboard.max_speed.getDouble(0.8));
     drivebase.setDeadband(shuffleboard.deadband_zone.getDouble(0.05));
-    WheelSpeeds speeds;
     switch (shuffleboard.getDriveMode()) {
       case "curve":
         drivebase.curvatureDrive(joystick.getLeftY(), joystick.getRightX(), joystick.getRightBumper());
-        speeds = DifferentialDrive.curvatureDriveIK(joystick.getLeftY(), joystick.getRightX(), joystick.getRightBumper());
-        shuffleboard.setFakeEncoders(speeds);
         break;
       case "arcade":
-        drivebase.arcadeDrive(joystick.getLeftY(), joystick.getRightX(), true);
-        speeds = DifferentialDrive.arcadeDriveIK(joystick.getLeftY(), joystick.getRightX(), true);
-        shuffleboard.setFakeEncoders(speeds);
+        drivebase.arcadeDrive(joystick.getRightY(), joystick.getRightX(), true);
         break;
       case "tank":
         drivebase.tankDrive(joystick.getLeftY(), joystick.getRightY(), true);
-        speeds = DifferentialDrive.tankDriveIK(joystick.getLeftY(), joystick.getRightY(), true);
-        shuffleboard.setFakeEncoders(speeds);
         break;
     }
   }

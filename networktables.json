@@ -2,36 +2,34 @@
   {
     "name": "/Shuffleboard/TheaterBot/Eye Speed",
     "type": "double",
-    "value": 0.26519337016574585,
+    "value": 0.1,
     "properties": {
-      "persistent": true,
-      "retained": true
+      "persistent": true
     }
   },
   {
     "name": "/Shuffleboard/TheaterBot/Deadband Zone",
     "type": "double",
-    "value": 0.043603411513859276,
+    "value": 0.05,
     "properties": {
-      "persistent": true,
-      "retained": true
+      "persistent": true
     }
   },
   {
     "name": "/Shuffleboard/TheaterBot/Max Speed",
     "type": "double",
-    "value": 1.0,
+    "value": 0.8,
     "properties": {
-      "persistent": true,
-      "retained": true
+      "persistent": true
     }
   },
   {
     "name": "/Shuffleboard/TheaterBot/Min Arm Speed",
     "type": "double",
-    "value": 0.2,
+    "value": 0.1488272921108742,
     "properties": {
-      "persistent": true
+      "persistent": true,
+      "retained": true
     }
   },
   {
@@ -40,6 +38,15 @@
     "value": 0.6,
     "properties": {
       "persistent": true
+    }
+  },
+  {
+    "name": "/Shuffleboard/TheaterBot/Max Drive Speed",
+    "type": "double",
+    "value": 0.1385927505330491,
+    "properties": {
+      "persistent": true,
+      "retained": true
     }
   }
 ]
