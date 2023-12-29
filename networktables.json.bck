@@ -25,21 +25,5 @@
       "persistent": true,
       "retained": true
     }
-  },
-  {
-    "name": "/Shuffleboard/TheaterBot/Min Arm Speed",
-    "type": "double",
-    "value": 0.2,
-    "properties": {
-      "persistent": true
-    }
-  },
-  {
-    "name": "/Shuffleboard/TheaterBot/Max Arm Speed",
-    "type": "double",
-    "value": 0.6,
-    "properties": {
-      "persistent": true
-    }
   }
 ]

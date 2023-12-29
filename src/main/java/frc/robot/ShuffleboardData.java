@@ -80,7 +80,19 @@ public class ShuffleboardData {
                                         .withWidget(BuiltInWidgets.kNumberSlider)
                                         .withProperties(Map.of("Min",0,"Max",1))
                                         .getEntry();
-    
+    public GenericEntry arm_min_speed = tab.addPersistent("Min Arm Speed", 0.2)
+                                        .withPosition(3, 2)
+                                        .withSize(2, 1)
+                                        .withWidget(BuiltInWidgets.kNumberSlider)
+                                        .withProperties(Map.of("Min",0,"Max",1))
+                                        .getEntry();
+    public GenericEntry arm_max_speed = tab.addPersistent("Max Arm Speed", 0.6)
+                                        .withPosition(5, 2)
+                                        .withSize(2, 1)
+                                        .withWidget(BuiltInWidgets.kNumberSlider)
+                                        .withProperties(Map.of("Min",0,"Max",1))
+                                        .getEntry();
+                                        
     private DifferentialDriveOdometry m_odometry = new DifferentialDriveOdometry(
         new Rotation2d(0),
         0.0,0.0,
@@ -98,7 +110,9 @@ public class ShuffleboardData {
         drive_mode.setDefaultOption("Curvature Drive", "curve");
         drive_mode.addOption("Arcade Drive", "arcade");
         drive_mode.addOption("Tank Drive", "tank");
-        tab.add("Drive Mode", drive_mode).withPosition(5, 2).withSize(2,1);
+        tab.add("Drive Mode", drive_mode)
+            .withPosition(7, 2)
+            .withSize(3,1);
     }
     public String getDriveMode() {
         return drive_mode.getSelected();
