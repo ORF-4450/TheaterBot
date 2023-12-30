@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
@@ -50,6 +51,10 @@ public class Robot extends TimedRobot {
     m_rightMotor2.setInverted(true);
     m_leftMotor2.follow(m_leftMotor1);
     m_rightMotor2.follow(m_rightMotor1);
+    m_rightMotor1.setNeutralMode(NeutralMode.Coast);
+    m_rightMotor2.setNeutralMode(NeutralMode.Coast);
+    m_leftMotor1.setNeutralMode(NeutralMode.Coast);
+    m_leftMotor2.setNeutralMode(NeutralMode.Coast);
 
     // setup arm motors
     armA.setInverted(true);
