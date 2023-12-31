@@ -47,8 +47,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // setup drive motors
-    m_rightMotor1.setInverted(true);
-    m_rightMotor2.setInverted(true);
+    m_leftMotor1.setInverted(true);
+    m_leftMotor2.setInverted(true);
     m_leftMotor2.follow(m_leftMotor1);
     m_rightMotor2.follow(m_rightMotor1);
     m_rightMotor1.setNeutralMode(NeutralMode.Coast);
@@ -125,12 +125,15 @@ public class Robot extends TimedRobot {
   private void moveAttachments() { 
     counter += 0.01;
     if (counter >= (2 * Math.PI)) {counter = 0.0;}
-       
+
+    double mean_speeds = 0.5 * (shuffleboard.arm_max_speed.getDouble(0.2) + shuffleboard.arm_min_speed.getDouble(0.6));
+    double plusminus_speed = mean_speeds - shuffleboard.arm_max_speed.getDouble(0.2);
+
     // arms ------------------
-    double armApower = 0; if (armAtoggle) {armApower = 0.3 + 0.2 * Math.sin(counter);}
-    double armBpower = 0; if (armBtoggle) {armBpower = 0.3 + 0.2 * Math.cos(counter+0.22);}
-    double armXpower = 0; if (armXtoggle) {armXpower = 0.3 + 0.2 * Math.sin(counter);}
-    double armYpower = 0; if (armYtoggle) {armYpower = 0.3 + 0.2 * Math.cos(counter+0.22);}
+    double armApower = 0; if (armAtoggle) {armApower = mean_speeds + plusminus_speed * Math.sin(counter);}
+    double armBpower = 0; if (armBtoggle) {armBpower = mean_speeds + plusminus_speed * Math.cos(counter+0.79);}
+    double armXpower = 0; if (armXtoggle) {armXpower = mean_speeds + plusminus_speed * Math.sin(counter+1.3);}
+    double armYpower = 0; if (armYtoggle) {armYpower = mean_speeds + plusminus_speed * Math.cos(counter+0.22);}
 
     armA.set(armApower);
     armB.set(armBpower);
