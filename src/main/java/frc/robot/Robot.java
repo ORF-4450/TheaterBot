@@ -158,7 +158,7 @@ public class Robot extends TimedRobot {
     drivebase.setDeadband(shuffleboard.deadband_zone.getDouble(0.05));
     switch (shuffleboard.getDriveMode()) {
       case "curve":
-        drivebase.curvatureDrive(joystick.getLeftY(), joystick.getRightX(), joystick.getRightBumper());
+        drivebase.curvatureDrive(joystick.getLeftY(), -joystick.getRightX(), joystick.getRightBumper());
         break;
       case "arcade":
         drivebase.arcadeDrive(joystick.getRightY(), joystick.getRightX(), true);

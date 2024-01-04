@@ -71,7 +71,7 @@ public class ShuffleboardData {
                                         .withPosition(5, 1)
                                         .withSize(2, 1)
                                         .withWidget(BuiltInWidgets.kNumberSlider)
-                                        .withProperties(Map.of("Min",0,"Max",1))
+                                        .withProperties(Map.of("Min",0,"Max",0.25))
                                         .getEntry();
     public GenericEntry arm_min_speed = tab.addPersistent("Min Arm Speed", 0.2)
                                         .withPosition(3, 2)
